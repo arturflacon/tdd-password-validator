@@ -2,7 +2,7 @@
 
 Módulo de validação de senhas desenvolvido com a metodologia **Test-Driven Development (TDD)** para uma fintech brasileira.
 
----
+----
 
 ## Regras de Validação
 
