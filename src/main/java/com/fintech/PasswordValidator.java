@@ -20,6 +20,7 @@ public class PasswordValidator {
         if (!hasLower) return false;
         if (!hasDigit) return false;
         if (!hasSpecial) return false;
+        if (password.contains(" ")) return false;
         return true;
     }
 }
