@@ -28,4 +28,9 @@ class PasswordValidatorTest {
     void deveRejeitarSenhaSemLetraMaiuscula() {
         assertFalse(validator.validate("abc1!xyz"));
     }
+
+    @Test
+    void deveRejeitarSenhaSemLetraMinuscula() {
+        assertFalse(validator.validate("ABC1!XYZ"));
+    }
 }
