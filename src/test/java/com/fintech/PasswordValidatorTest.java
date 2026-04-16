@@ -38,4 +38,9 @@ class PasswordValidatorTest {
     void deveRejeitarSenhaSemNumero() {
         assertFalse(validator.validate("Abcdefg!"));
     }
+
+    @Test
+    void deveRejeitarSenhaSemCaractereEspecial() {
+        assertFalse(validator.validate("Abc1wxyz"));
+    }
 }
