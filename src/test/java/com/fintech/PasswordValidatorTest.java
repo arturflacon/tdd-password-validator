@@ -43,4 +43,9 @@ class PasswordValidatorTest {
     void deveRejeitarSenhaSemCaractereEspecial() {
         assertFalse(validator.validate("Abc1wxyz"));
     }
+
+    @Test
+    void deveRejeitarSenhaComEspacoEmBranco() {
+        assertFalse(validator.validate("Abc1! yz"));
+    }
 }
