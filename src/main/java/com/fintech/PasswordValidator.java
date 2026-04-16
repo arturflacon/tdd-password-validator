@@ -2,25 +2,51 @@ package com.fintech;
 
 public class PasswordValidator {
 
+    private static final String SPECIAL_CHARS = "!@#$%^&*";
+
     public boolean validate(String password) {
         if (password == null) return false;
-        if (password.length() < 8) return false;
-        boolean hasUpper = false;
-        boolean hasLower = false;
-        boolean hasDigit = false;
-        boolean hasSpecial = false;
-        String specialChars = "!@#$%^&*";
+        return hasMinimumLength(password)
+            && hasUpperCase(password)
+            && hasLowerCase(password)
+            && hasDigit(password)
+            && hasSpecialChar(password)
+            && hasNoWhitespace(password);
+    }
+
+    private boolean hasMinimumLength(String password) {
+        return password.length() >= 8;
+    }
+
+    private boolean hasUpperCase(String password) {
         for (char c : password.toCharArray()) {
-            if (Character.isUpperCase(c)) hasUpper = true;
-            if (Character.isLowerCase(c)) hasLower = true;
-            if (Character.isDigit(c)) hasDigit = true;
-            if (specialChars.indexOf(c) >= 0) hasSpecial = true;
+            if (Character.isUpperCase(c)) return true;
         }
-        if (!hasUpper) return false;
-        if (!hasLower) return false;
-        if (!hasDigit) return false;
-        if (!hasSpecial) return false;
-        if (password.contains(" ")) return false;
-        return true;
+        return false;
+    }
+
+    private boolean hasLowerCase(String password) {
+        for (char c : password.toCharArray()) {
+            if (Character.isLowerCase(c)) return true;
+        }
+        return false;
+    }
+
+    private boolean hasDigit(String password) {
+        for (char c : password.toCharArray()) {
+            if (Character.isDigit(c)) return true;
+        }
+        return false;
+    }
+
+    private boolean hasSpecialChar(String password) {
+        for (char c : password.toCharArray()) {
+            if (SPECIAL_CHARS.indexOf(c) >= 0) return true;
+        }
+        return false;
+    }
+
+    private boolean hasNoWhitespace(String password) {
+        return !password.contains(" ");
     }
 }
